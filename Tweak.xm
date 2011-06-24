@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 #define PLIST @"/var/mobile/Library/Preferences/am.theiostre.batteryshower.plist"
 
-%hook SBUIController
+%hook SBAwayChargingView
 
--(BOOL)isOnAC {
++(BOOL)shouldShowDeviceBattery {
 	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:PLIST];
 	
 	if ([[dict objectForKey:@"Enabled"] boolValue]) {
@@ -22,4 +22,8 @@
 
 }
 
+%end
+
+%hook SBWallpaperView
+- (float)alpha { return 0.0f; }
 %end
