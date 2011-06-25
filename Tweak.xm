@@ -22,7 +22,7 @@ else {
 	//default action
 	return YES;
 }
-
+}
 %end
 
 %hook SBWallpaperView
