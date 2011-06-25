@@ -6,20 +6,21 @@
 +(BOOL)shouldShowDeviceBattery {
 	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:PLIST];
 	
+	if (dict) {
 	if ([[dict objectForKey:@"Enabled"] boolValue]) {
 
 		if ([[dict objectForKey:@"Battery"] boolValue]) {
 			return YES;
 		}
-		else if (![[dict objectForKey:@"Battery"] boolValue]) {
+		else {
 			return NO;
 		}
 	}
+}
 
-	else {
-		return %orig;
-	}
-
+else {
+	//default action
+	return YES;
 }
 
 %end
